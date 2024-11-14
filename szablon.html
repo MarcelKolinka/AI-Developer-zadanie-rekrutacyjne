@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sztuczna Inteligencja: Wpływ i Wyzwania</title>
+    <style>
+           /* Reset stylów */
+           * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Stylizacja ogólna */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        /* Nagłówek */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #003366;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        /* Główna sekcja */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stylizacja sekcji i nagłówków */
+        section {
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            font-size: 1.5em;
+            color: #003366;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #003366;
+            padding-bottom: 5px;
+        }
+
+        /* Stylizacja akapitów */
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* Sekcja przypisu */
+        footer {
+            font-style: italic;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+
+          /* Stylizacja przycisku zmiany motywu */
+          .theme-toggle-button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle-button:hover {
+            background-color: #002244;
+        }
+
+        /* Ciemny motyw */
+        .dark-theme {
+            background-color: #1a1a1a;
+            color: #f9f9f9;
+        }
+
+        .dark-theme main {
+            background-color: #333;
+        }
+
+        .dark-theme header {
+            background-color: #111;
+            color: #ddd;
+        }
+
+        .dark-theme section h2 {
+            color: #ddd;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .dark-theme .theme-toggle-button {
+            background-color: #555;
+            color: #f9f9f9;
+        }
+
+        .dark-theme .theme-toggle-button:hover {
+            background-color: #444;
+        }
+
+
+        /* Responsywność */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            section h2 {
+                font-size: 1.3em;
+            }
+        }
+                /* Podstawowe stylowanie dla wszystkich obrazów */
+        img {
+            width: 100%;                 /* Pełna szerokość kontenera */
+            max-width: 300px;            /* Maksymalna szerokość każdego obrazu */
+            height: auto;                /* Zachowanie proporcji */
+            border-radius: 10px;         /* Zaokrąglone rogi */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Subtelny cień */
+            margin: 15px;                /* Odstęp wokół każdego obrazu */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Płynne przejście */
+            border: 2px solid navy;      /* Granatowa obwódka */
+        }
+
+        /* Efekt po najechaniu */
+        img:hover {
+            transform: scale(1.05);      /* Lekkie powiększenie po najechaniu */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  /* Mocniejszy cień po najechaniu */
+        }
+
+        /* Dodatkowa responsywność dla mniejszych ekranów */
+        @media (max-width: 768px) {
+            img {
+                max-width: 100%;         /* Pełna szerokość na mniejszych ekranach */
+                margin: 10px 0;          /* Mniejsze marginesy */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function toggleTheme() {
+        // Przełącz klasę dark-theme na body
+        document.body.classList.toggle('dark-theme');
+    }
+</script>
+</html>
