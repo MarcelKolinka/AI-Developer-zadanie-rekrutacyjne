@@ -9,7 +9,7 @@ fs.readFile('input.txt', 'utf8', (err, data) => {
     return;
   }
 
-//twoj klucz API OpenAI należy wstawić swój po apiKey: (pamietaj aby wstawić kod api w apostrofie np. tak 'skj-2345') żeby aplikacja działała
+//twoj klucz API OpenAI należy wstawić swój klucz w 13 linijce po apiKey: (pamietaj aby wstawić kod api w apostrofie np. tak 'skj-2345') żeby aplikacja działała
 const openai = new OpenAI({ apiKey:yourApiKey});
 //podlaczanie sie do OpenAI i prompt
 async function generateHtmlArticle() {
