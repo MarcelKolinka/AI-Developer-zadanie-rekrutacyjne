@@ -27,13 +27,18 @@ function validateFile(filePath) {
 
   // Sprawdzamy, czy plik nie jest za duży
   if (stats.size > MAX_FILE_SIZE) {
-    console.error(`Error: The input file at ${filePath} is too large. Maximum allowed size is ${MAX_FILE_SIZE / (1024 * 1024)} MB.`);
+    console.error(
+      `Error: The input file at ${filePath} is too large. Maximum allowed size is ${MAX_FILE_SIZE / (1024 * 1024)} MB.`
+    );
     process.exit(1);
   }
 
   // Wczytujemy zawartość pliku i sprawdzamy, czy jest poprawnie zakodowana w UTF-8
   const content = fs.readFileSync(filePath, "utf8");
-  if (!Buffer.from(content, "utf8").toString("utf8")) {
+
+  try {
+    Buffer.from(content, "utf8").toString("utf8"); // Sprawdzamy poprawność kodowania UTF-8
+  } catch (error) {
     console.error(`Error: The input file at ${filePath} is not UTF-8 encoded.`);
     process.exit(1);
   }
