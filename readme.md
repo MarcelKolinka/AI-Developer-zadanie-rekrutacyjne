@@ -1,10 +1,10 @@
 Jak działa aplikacja
 
-Aplikacja odczytuje zawartość pliku input.txt, a następnie łączy się z OpenAI i wysyła treść pliku input.txt do OpenAI z odpowiednim promptem, który przekształca tekst
+Aplikacja odczytuje zawartość folderu input, a następnie łączy się z OpenAI i wysyła treści z folderu input do OpenAI z odpowiednim promptem, który przekształca tekst
 na format HTML. Prompt ten generuje strukturę HTML zawierającą jedynie sekcję body z dodanymi odpowiednimi tagami, przyciskami oraz innymi elementami w estetycznym 
 układzie.
 
-Otrzymaną odpowiedź zapisujemy do pliku artykul.html. Mamy również przygotowany plik szablon.html, który zawiera stylizację CSS oraz kod JavaScript odpowiedzialny za 
+Otrzymaną odpowiedź zapisujemy do folderu artykul. Mamy również przygotowany plik szablon.html, który zawiera stylizację CSS oraz kod JavaScript odpowiedzialny za 
 finalną prezentację strony. W efekcie, po skopiowaniu sekcji body z artykul.html do szablon.html, uzyskamy kompletną, ostylowaną stronę.i właśnie plik podglad.html 
 jest połączeniem artykul.html oraz szablon.html , podglad.html prezentuje nam pełną strone.
 
