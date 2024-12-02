@@ -51,7 +51,7 @@ artykul — folder na wygenerowane pliki HTML.
 W folderze teksty umieść pliki tekstowe .txt, które chcesz przetworzyć.
 
 10. Uruchom aplikację
-Otwórz terminal w folderze projektu i uruchom aplikację:
+Otwórz terminal w folderze projektu i uruchom aplikację wpisując w terminal:
 node app.js
 Aplikacja rozpocznie przetwarzanie plików tekstowych z folderu teksty i zapisze wygenerowane pliki HTML w folderze artykul.
 
