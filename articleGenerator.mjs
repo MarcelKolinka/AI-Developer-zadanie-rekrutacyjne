@@ -81,7 +81,7 @@ async function callOpenAI(apiKey, inputText) {
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
-        { role: "system", content: "Generate an HTML article Include only <body> and <body> content, do not cut any of the given text." },
+        { role: "system", content: "Generate an HTML article Include only <body> and </body> content, do not cut any of the given text." },
         {
           role: "user",
           content: `Format the following text into well-structured, semantic HTML, using the appropriate tags such as <header>, <main>, <article>, <section>, <h1>, <h2>, <p>, <i>, <footer>, and ensure accessibility and readability throughout.
