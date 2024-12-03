@@ -2,6 +2,7 @@ import OpenAI from "openai"; // Importujemy bibliotekę OpenAI do komunikacji z 
 import fs from "node:fs"; // Importujemy moduł do pracy z systemem plików
 import path from "node:path"; // Importujemy moduł do pracy z ścieżkami plików
 
+
 // Ładujemy klucz API z zmiennych środowiskowych
 const yourApiKey = process.env.OPENAI_API_KEY;
 
@@ -76,7 +77,32 @@ async function callOpenAI(apiKey, inputText) {
   try {
     // Tworzymy instancję klienta OpenAI z kluczem API
     const openai = new OpenAI({ apiKey });
-
+    const userPrompt = `Format the following text into well-structured, semantic HTML, using the appropriate tags such as <header>, <main>, <article>, <section>, <h1>, <h2>, <p>, <i>, <footer>, and ensure accessibility and readability throughout.
+    For each article section:
+    1. Wrap each section's content with the <section> tag to ensure proper semantic structure.
+    2. Each section should have its own heading using the <h2> tag.
+    3. At the bottom of each section, add an <img> tag with a placeholder src (image_placeholder.jpg).
+    4. Provide a descriptive alt attribute for each image, ensuring the description is detailed and contextually relevant to the content of the section. Include the background, setting, and atmosphere of the scene. For example, if the section is about AI in healthcare, the alt attribute could be: "A doctor using an AI-powered diagnostic tool to analyze medical scans in a hospital setting, showing the interaction between human and machine."
+    5. Add a brief <p> tag directly below each image to describe what the image represents. The description should not just describe the image but also explain its relevance to the section's content.
+    
+    Ensure that:
+    1. The entire content is wrapped in an <article> tag, as it represents the full article.
+    2. The <header> tag should contain the main title of the article using an <h1> tag, providing a clear introduction to the content.
+    3. Each section is clearly defined with proper <h2> headings.
+    4. Include a <footer> tag at the bottom with the copyright notice or any additional relevant information.
+    
+    At the end of the last section:
+    1. Do not include a theme toggle button, interactive elements, or any JavaScript functionality, as this is not required for the task.
+    
+    Additional notes:
+    - Be specific about the context of each image and ensure it aligns with the section's topic. Use the alt text to describe not only what is visible but also its relevance to the article.
+    - Ensure that the <main> content is well-structured, easy to follow, and maintains a logical separation between sections.
+    - Avoid hardcoding any content, and focus on creating clean, readable HTML that accurately reflects the article's themes and structure.
+    - Maintain proper accessibility standards throughout, ensuring all content is usable and understandable, especially for screen readers.
+    
+    Here is the text to format:
+    
+    ${inputText}`;
     // Wysyłamy zapytanie do API
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
@@ -84,28 +110,7 @@ async function callOpenAI(apiKey, inputText) {
         { role: "system", content: "Generate an HTML article Include only <body> and </body> content, do not cut any of the given text." },
         {
           role: "user",
-          content: `Format the following text into well-structured, semantic HTML, using the appropriate tags such as <header>, <main>, <article>, <section>, <h1>, <h2>, <p>, <i>, <footer>, and ensure accessibility and readability throughout.
-                    For each article section:
-                    1. Wrap each section's content with the <section> tag to ensure proper semantic structure.
-                    2. Each section should have its own heading using the <h2> tag.
-                    3. At the bottom of each section, add an <img> tag with a placeholder src (image_placeholder.jpg).
-                    4. Provide a descriptive alt attribute for each image, ensuring the description is detailed and contextually relevant to the content of the section. Include the background, setting, and atmosphere of the scene. For example, if the section is about AI in healthcare, the alt attribute could be: "A doctor using an AI-powered diagnostic tool to analyze medical scans in a hospital setting, showing the interaction between human and machine."
-                    5. Add a brief <p> tag directly below each image to describe what the image represents. The description should not just describe the image but also explain its relevance to the sections content.
-
-                    Ensure that:
-                    1. The entire content is wrapped in an <article> tag, as it represents the full article.
-                    2. The <header> tag should contain the main title of the article using an <h1> tag, providing a clear introduction to the content.
-                    3. Each section is clearly defined with proper <h2> headings.
-                    4. Include a <footer> tag at the bottom with the copyright notice or any additional relevant information.
-
-                    At the end of the last section:
-                    1. Do not include a theme toggle button, interactive elements, or any JavaScript functionality, as this is not required for the task.
-
-                    Additional notes:
-                    - Be specific about the context of each image and ensure it aligns with the sections topic. Use the alt text to describe not only what is visible but also its relevance to the article.
-                    - Ensure that the <main> content is well-structured, easy to follow, and maintains a logical separation between sections. 
-                    - Avoid hardcoding any content, and focus on creating clean, readable HTML that accurately reflects the articles themes and structure.
-                    - Maintain proper accessibility standards throughout, ensuring all content is usable and understandable, especially for screen readers.`,
+          content: userPrompt,
         },
       ],
     });
@@ -165,6 +170,12 @@ async function processMultipleFiles(inputFolderPath, outputFolderPath) {
 (async function main() {
   const inputFolderPath = path.resolve("input"); // Folder z plikami wejściowymi
   const outputFolderPath = path.resolve("artykul"); // Folder na wygenerowane pliki HTML
+
+     // Sprawdzamy, czy folder wyjściowy istnieje, jeśli nie, tworzymy go
+     if (!fs.existsSync(outputFolderPath)) {
+      fs.mkdirSync(outputFolderPath, { recursive: true });
+    }
+  
 
   console.log("Processing multiple files...");
   await processMultipleFiles(inputFolderPath, outputFolderPath); // Rozpoczynamy równoczesne przetwarzanie plików
