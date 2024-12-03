@@ -91,8 +91,12 @@ async function callOpenAI(apiKey, inputText) {
     3. Each section is clearly defined with proper <h2> headings.
     4. Include a <footer> tag at the bottom with the copyright notice or any additional relevant information.
     
-    At the end of the last section:
-    1. Do not include a theme toggle button, interactive elements, or any JavaScript functionality, as this is not required for the task.
+    Under the <header> tag: 
+    1. Generate a horizontal breadcrumb navigation menu with the following structure and characteristics:
+    2. HTML Structure: Use <nav> for the container with a class "breadcrumbs".
+    3. Links: Include three links labeled "Home", "AI", and "Wpływ i wyzwania".
+    4. Separators: Use a <span> element with the text / as a separator between each link.
+    Functionality: Ensure each breadcrumb link leads to a dummy # URL for now.
     
     Additional notes:
     - Be specific about the context of each image and ensure it aligns with the section's topic. Use the alt text to describe not only what is visible but also its relevance to the article.
