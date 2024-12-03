@@ -176,7 +176,6 @@ async function processMultipleFiles(inputFolderPath, outputFolderPath) {
       fs.mkdirSync(outputFolderPath, { recursive: true });
     }
   
-
   console.log("Processing multiple files...");
   await processMultipleFiles(inputFolderPath, outputFolderPath); // Rozpoczynamy równoczesne przetwarzanie plików
 })();
