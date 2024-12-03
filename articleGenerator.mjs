@@ -111,7 +111,7 @@ async function callOpenAI(apiKey, inputText) {
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
-        { role: "system", content: "Generate an HTML article Include only <body> and </body> content, do not cut any of the given text." },
+        { role: "system", content: "Generate an HTML article Include only <body> and </body> content,do not include <head> and </head> content, do not cut any of the given text." },
         {
           role: "user",
           content: userPrompt,
